@@ -29,12 +29,10 @@ function setup(){
   createCanvas(500,500);
 
   ball1 = new Ball(11,12,30,30,5,5, this.colour);
-  ball2 = new Ball (33,33,60,78,12,12, this.colour);
 }
 
 function draw(){
   createCanvas(400,400);
 
   ball1.drawBall();
-  ball2.drawBall();
 }
