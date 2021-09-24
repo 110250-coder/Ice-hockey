@@ -15,11 +15,11 @@ class Ball{
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
 
-    if(this.y <= 0 || this.y > 500){
+    if(this.y <= 25 || this.y > 475){
       this.vy= this.vy * -1;
     }
 
-    if (this.x <= 0 || this.x > 400) {
+    if (this.x <= 25 || this.x > 475) {
       this.vx = this.vx * -1;
     }
   }
@@ -28,11 +28,11 @@ class Ball{
 function setup(){
   createCanvas(500,500);
 
-  ball1 = new Ball(11,12,30,30,5,5, this.colour);
+  ball1 = new Ball(191,102,301,30,5,5, this.colour);
 }
 
 function draw(){
-  createCanvas(400,400);
+  background(150);
 
   ball1.drawBall();
 }
