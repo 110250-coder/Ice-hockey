@@ -10,8 +10,8 @@ class Ball{
   }
 
   drawBall (){
-    ellipse(this.x,this.y,50,50); 
     fill (this.colour);
+    ellipse(this.x,this.y,50,50); 
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
 
@@ -25,14 +25,33 @@ class Ball{
   }
 }
 
+class Goal{
+  constructor(xg,yg,wg,hg, colourg){
+    this.xg = xg;
+    this.yg = yg;
+    this.wg = wg;
+    this.hg = hg;
+    this.colourg = ("red");
+  }
+
+  drawGoal (){
+    fill (this.colourg);
+    rect(this.xg, this.yg, 50,50);
+  }
+}
+
 function setup(){
   createCanvas(500,500);
 
   ball1 = new Ball(191,102,301,30,5,5, this.colour);
+  goal1 = new Goal(0,225,50, 50,this.colourg);
+  goal2 = new Goal(449,225,50,50, this.colourg);
 }
 
 function draw(){
   background(150);
 
   ball1.drawBall();
+  goal1.drawGoal();
+  goal2.drawGoal();
 }
