@@ -54,4 +54,4 @@ function draw(){
   ball1.drawBall();
   goal1.drawGoal();
   goal2.drawGoal();
-}
+} 
