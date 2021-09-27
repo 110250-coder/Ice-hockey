@@ -39,6 +39,21 @@ class Goal{
     rect(this.xg, this.yg, 50,50);
   }
 }
+class Speler{
+  constructor(xs,ys,ws,hs){
+   this.xs = xs;
+   this.ys = ys;
+   this.ws = ws;
+   this.hs = hs;
+   }
+
+  drawSpeler (){
+    fill ("cyan");
+    ellipse(this.xs,this.ys,50,50); 
+   
+  }
+}
+
 
 function setup(){
   createCanvas(500,500);
@@ -46,6 +61,7 @@ function setup(){
   ball1 = new Ball(191,102,301,30,5,5, this.colour);
   goal1 = new Goal(0,225,50, 50,this.colourg);
   goal2 = new Goal(449,225,50,50, this.colourg);
+  speler1 = new Speler(30.24,300,80,5,5,"red");
 }
 
 function draw(){
@@ -54,4 +70,5 @@ function draw(){
   ball1.drawBall();
   goal1.drawGoal();
   goal2.drawGoal();
+  speler1.drawSpeler();
 } 
