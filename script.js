@@ -30,7 +30,7 @@ class Goal{
     this.xg = xg;
     this.yg = yg;
     this.wg = wg;
-    this.hg = hg;
+    this.hg = hg;    
     this.colourg = ("red");
   }
 
@@ -39,17 +39,22 @@ class Goal{
     rect(this.xg, this.yg, 50,50);
   }
 }
+
 class Speler{
-  constructor(xs,ys,ws,hs){
+  constructor(xs,ys, controls){
    this.xs = xs;
    this.ys = ys;
-   this.ws = ws;
-   this.hs = hs;
+   this.controls = controls;
    }
 
   drawSpeler (){
     fill ("cyan");
-    ellipse(this.xs,this.ys,50,50); 
+    if(this.controls == "m"){
+      ellipse(mouseX, mouseY, 50,50); 
+    }
+    else{
+      ellipse(this.xs, this.ys, 50,50); 
+    }
    
   }
 }
@@ -61,7 +66,7 @@ function setup(){
   ball1 = new Ball(191,102,301,30,5,5, this.colour);
   goal1 = new Goal(0,225,50, 50,this.colourg);
   goal2 = new Goal(449,225,50,50, this.colourg);
-  speler1 = new Speler(50.24,250,80,5,5,"red");
+  speler1 = new Speler(50,250,"m");
   speler2 = new Speler(450,250);
 }
 
@@ -74,3 +79,4 @@ function draw(){
   speler1.drawSpeler();
   speler2.drawSpeler();
 } 
+
