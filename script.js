@@ -6,7 +6,7 @@ class Ball {
     this.h = h;
     this.vx = vx;
     this.vy = vy;
-    this.colour = (random(0, 255, 777))
+    this.colour = ("red");
   }
 
   drawBall() {
@@ -31,7 +31,7 @@ class Goal {
     this.yg = yg;
     this.wg = wg;
     this.hg = hg;
-    this.colourg = ("red");
+    this.colourg = ("black");
   }
 
   drawGoal() {
@@ -49,10 +49,27 @@ class Speler {
 
   drawSpeler() {
     fill("cyan");
+
     if (this.controls == "m") {
+      console.log(mouseY);
+      if(mouseX + 25 >= width){
+        mouseX = width - 25;
+      }
+      if(mouseX <= 25){
+        mouseX = 25;
+      }
+      if(mouseY <= 25){
+        mouseY = 25;
+      }
+      if(mouseY + 25 >= height){
+        mouseY = height - 30;
+      }
+
       ellipse(mouseX, mouseY, 50, 50);
     }
+
     else {
+      fill("pink");
       ellipse(this.xs, this.ys, 50, 50);
 
       if (keyIsDown(LEFT_ARROW)) {
@@ -67,6 +84,19 @@ class Speler {
       if (keyIsDown(DOWN_ARROW)) {
         this.ys += 5;
       }
+    }
+
+     if(this.xs + 25 >= width){
+      this.xs = width - 25;
+    }
+    if(this.xs <= 25){
+      this.xs = 25;
+    }
+    if(this.ys <= 25){
+      this.ys = 25;
+    }
+    if(this.ys + 25 >= height){
+      this.ys = height - 25;
     }
   }
 }
