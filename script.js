@@ -51,7 +51,7 @@ class Speler {
     fill("cyan");
 
     if (this.controls == "m") {
-      console.log(mouseY);
+      //console.log(mouseY);
       if(mouseX + 25 >= width){
         mouseX = width - 25;
       }
