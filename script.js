@@ -1,3 +1,4 @@
+var speler1, speler2;
 class Ball {
   constructor(x, y, w, h, vx, vy, colour) {
     this.x = x;
@@ -11,7 +12,7 @@ class Ball {
 
   drawBall() {
     fill(this.colour);
-    ellipse(this.x, this.y, 50, 50);
+    rect(this.x, this.y, 50, 50);
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
 
@@ -22,7 +23,17 @@ class Ball {
     if (this.x <= 25 || this.x > 475) {
       this.vx = this.vx * -1;
     }
-  }
+
+    console.log(speler2.xs);
+
+    if(speler1.xs + 50 > this.x && speler1.xs < this.x + this.w){
+      
+      if(speler1.ys + 50 > this.y && speler1.ys < this.y + this.h){
+        this.colour = "orange";
+        this.vx = this.vx * -1;
+      }
+    }
+  }  
 }
 
 class Goal {
@@ -51,6 +62,7 @@ class Speler {
     fill("cyan");
 
     if (this.controls == "m") {
+      this.xs = mouseX;
       //console.log(mouseY);
       if(mouseX + 25 >= width){
         mouseX = width - 25;
@@ -65,12 +77,12 @@ class Speler {
         mouseY = height - 30;
       }
 
-      ellipse(mouseX, mouseY, 50, 50);
+      rect(mouseX, mouseY, 50, 50);
     }
 
     else {
       fill("pink");
-      ellipse(this.xs, this.ys, 50, 50);
+      rect(this.xs, this.ys, 50, 50);
 
       if (keyIsDown(LEFT_ARROW)) {
         this.xs -= 5;
@@ -105,7 +117,7 @@ class Speler {
 function setup() {
   createCanvas(500, 500);
 
-  ball1 = new Ball(191, 102, 301, 30, 5, 5, this.colour);
+  ball1 = new Ball(151, 70, 301, 30, 5, 5, this.colour);
   goal1 = new Goal(0, 225, 20, 80, this.colourg);
   goal2 = new Goal(485, 225, 15, 80, this.colourg);
   speler1 = new Speler(50, 250, "m");
