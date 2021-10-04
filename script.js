@@ -7,12 +7,12 @@ class Ball {
     this.h = h;
     this.vx = vx;
     this.vy = vy;
-    this.colour = ("red");
+    this.colour = "red";
   }
 
   drawBall() {
     fill(this.colour);
-    rect(this.x, this.y, 50, 50);
+    rect(this.x, this.y, this.w, this.h);
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
 
@@ -24,16 +24,22 @@ class Ball {
       this.vx = this.vx * -1;
     }
 
-    console.log(speler2.xs);
+    text(speler1.x, 10, 10);
+    text(speler1.y, 10, 30);
 
-    if(speler1.xs + 50 > this.x && speler1.xs < this.x + this.w){
-      
-      if(speler1.ys + 50 > this.y && speler1.ys < this.y + this.h){
-        this.colour = "orange";
-        this.vx = this.vx * -1;
+    spelers.forEach((speler1) => {
+      if (speler1.x < this.x + this.w && speler1.x + speler1.w > this.x) {
+        if (speler1.y < this.y + this.h && speler1.y + speler1.h > this.y) {
+          this.colour = "orange";        
+          this.vx = this.vx * -1;
+        }
       }
-    }
-  }  
+      else {
+        this.colour = "red";
+      }
+    })
+  }
+
 }
 
 class Goal {
@@ -53,8 +59,10 @@ class Goal {
 
 class Speler {
   constructor(xs, ys, controls) {
-    this.xs = xs;
-    this.ys = ys;
+    this.x = xs;
+    this.y = ys;
+    this.w = 10;
+    this.h = 50;
     this.controls = controls;
   }
 
@@ -62,66 +70,56 @@ class Speler {
     fill("cyan");
 
     if (this.controls == "m") {
-      this.xs = mouseX;
-      //console.log(mouseY);
-      if(mouseX + 25 >= width){
-        mouseX = width - 25;
-      }
-      if(mouseX <= 25){
-        mouseX = 25;
-      }
-      if(mouseY <= 25){
-        mouseY = 25;
-      }
-      if(mouseY + 25 >= height){
-        mouseY = height - 30;
-      }
+      this.x = mouseX;
+      this.y = mouseY;     
 
-      rect(mouseX, mouseY, 50, 50);
+      rect(this.x, this.y, this.w, this.h);
     }
 
     else {
       fill("pink");
-      rect(this.xs, this.ys, 50, 50);
+      rect(this.x, this.y, this.w, this.h);
 
       if (keyIsDown(LEFT_ARROW)) {
-        this.xs -= 5;
+        this.x -= 5;
       }
       if (keyIsDown(RIGHT_ARROW)) {
-        this.xs += 5;
+        this.x += 5;
       }
       if (keyIsDown(UP_ARROW)) {
-        this.ys -= 5;
+        this.y -= 5;
       }
       if (keyIsDown(DOWN_ARROW)) {
-        this.ys += 5;
+        this.y += 5;
       }
     }
 
-     if(this.xs + 25 >= width){
-      this.xs = width - 25;
+    if (this.x + this.w >= width) {
+      this.x = width - this.w;
     }
-    if(this.xs <= 25){
-      this.xs = 25;
+    if (this.x <= 0) {
+      this.x = 0;
     }
-    if(this.ys <= 25){
-      this.ys = 25;
+    if (this.y <= 0) {
+      this.y = 0;
     }
-    if(this.ys + 25 >= height){
-      this.ys = height - 25;
+    if (this.y + this.h >= height) {
+      this.y = height - this.h;
     }
   }
 }
 
-
+var spelers = [];
 function setup() {
   createCanvas(500, 500);
 
-  ball1 = new Ball(151, 70, 301, 30, 5, 5, this.colour);
+  ball1 = new Ball(151, 70, 30, 30, 5, 5, this.colour);
   goal1 = new Goal(0, 225, 20, 80, this.colourg);
   goal2 = new Goal(485, 225, 15, 80, this.colourg);
   speler1 = new Speler(50, 210, "m");
   speler2 = new Speler(460, 265);
+  spelers.push(speler1);
+  spelers.push(speler2);
 }
 
 function draw() {
