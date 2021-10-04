@@ -113,7 +113,7 @@ var spelers = [];
 function setup() {
   createCanvas(500, 500);
 
-  ball1 = new Ball(151, 70, 30, 30, 5, 5, this.colour);
+  ball1 = new Ball(151, 70, 30, 30, 3, 3, this.colour);
   goal1 = new Goal(0, 225, 20, 80, this.colourg);
   goal2 = new Goal(485, 225, 15, 80, this.colourg);
   speler1 = new Speler(50, 210, "m");
