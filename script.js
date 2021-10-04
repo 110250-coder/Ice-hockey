@@ -120,8 +120,8 @@ function setup() {
   ball1 = new Ball(151, 70, 301, 30, 5, 5, this.colour);
   goal1 = new Goal(0, 225, 20, 80, this.colourg);
   goal2 = new Goal(485, 225, 15, 80, this.colourg);
-  speler1 = new Speler(50, 250, "m");
-  speler2 = new Speler(450, 250);
+  speler1 = new Speler(50, 210, "m");
+  speler2 = new Speler(460, 265);
 }
 
 function draw() {
