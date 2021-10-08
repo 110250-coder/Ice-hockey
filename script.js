@@ -16,11 +16,11 @@ class Ball {
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
 
-    if (this.y <= 25 || this.y > 475) {
+    if (this.y <= 25 || this.y > 350) {
       this.vy = this.vy * -1;
     }
 
-    if (this.x <= 25 || this.x > 475) {
+    if (this.x <= 25 || this.x > 440) {
       this.vx = this.vx * -1;
     }
 
