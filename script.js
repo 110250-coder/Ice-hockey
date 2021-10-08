@@ -114,8 +114,8 @@ function setup() {
   createCanvas(500, 400);
   image = loadImage('Images/image.png');
   ball1 = new Ball(151, 70, 30, 30, 3, 3, this.colour);
-  goal1 = new Goal(0, 225, 20, 80, this.colourg);
-  goal2 = new Goal(485, 225, 15, 80, this.colourg);
+  goal1 = new Goal(25, 160, 20, 80, this.colourg);
+  goal2 = new Goal(457, 160, 15, 80, this.colourg);
   speler1 = new Speler(50, 210, "m");
   speler2 = new Speler(460, 265);
   spelers.push(speler1);
