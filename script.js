@@ -29,8 +29,7 @@ class Ball {
 
     spelers.forEach((speler1) => {
       if (speler1.x < this.x + this.w && speler1.x + speler1.w > this.x) {
-        if (speler1.y < this.y + this.h && speler1.y + speler1.h > this.y) {
-          this.colour = "orange";        
+        if (speler1.y < this.y + this.h && speler1.y + speler1.h > this.y) {      
           this.vx = this.vx * -1;
         }
       }
