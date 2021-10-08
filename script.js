@@ -111,8 +111,8 @@ class Speler {
 
 var spelers = [];
 function setup() {
-  createCanvas(500, 500);
-
+  createCanvas(500, 400);
+  image = loadImage('Images/image.png');
   ball1 = new Ball(151, 70, 30, 30, 3, 3, this.colour);
   goal1 = new Goal(0, 225, 20, 80, this.colourg);
   goal2 = new Goal(485, 225, 15, 80, this.colourg);
@@ -123,7 +123,7 @@ function setup() {
 }
 
 function draw() {
-  background(150);
+  background(image);
 
   ball1.drawBall();
   goal1.drawGoal();
