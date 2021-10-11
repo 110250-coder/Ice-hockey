@@ -1,4 +1,4 @@
-var speler1, speler2;
+var speler1, speler2, gameState = 1;
 class Ball {
   constructor(x, y, w, h, vx, vy, colour) {
     this.x = x;
@@ -54,6 +54,23 @@ class Goal {
     fill(this.colourg);
     rect(this.xg, this.yg, 15, 80);
   }
+  
+  checkcollision(){
+    if (this.x + this.w >= width) {
+      this.x = width - this.w;
+    }
+    if (this.x <= 0) {
+      this.x = 0;
+    } 
+
+    if (this.y <= 0) {
+      this.y = 0;
+    }
+    if (this.y + this.h >= height) {
+      this.y = height - this.h;
+    }
+
+  }
 }
 
 class Speler {
@@ -108,10 +125,14 @@ class Speler {
   }
 }
 
+function preload(){
+  image = loadImage('Images/image.png');
+}
+
 var spelers = [];
 function setup() {
   createCanvas(500, 400);
-  image = loadImage('Images/image.png');
+  
   ball1 = new Ball(151, 70, 30, 30, 3, 3, this.colour);
   goal1 = new Goal(25, 160, 20, 80, this.colourg);
   goal2 = new Goal(457, 160, 15, 80, this.colourg);
@@ -122,12 +143,57 @@ function setup() {
 }
 
 function draw() {
+ 
+
+  text("gameState" + gameState, 25, 25);
+
+  if (gameState == 1) {
+    game();
+  }
+
+  if (gameState == 2) {
+    gameOver();
+  }
+
+  if (gameState == 0) {
+    menu();
+  }
+}
+
+function menu (){
+  background("cyan");
+  text("1. menu", 25, 65);
+  text("2. start game", 25, 85);
+  text("3. game over", 25, 105);
+}
+
+function game() {
+  text("GAME RUNNING", 25, 45);
   background(image);
 
   ball1.drawBall();
   goal1.drawGoal();
   goal2.drawGoal();
+  goal1.checkcollision();
+  goal2.checkcollision();
   speler1.drawSpeler();
   speler2.drawSpeler();
 }
+
+function keyPressed() {
+
+  if (keyCode == 49) {
+    gameState = 0;
+  }
+
+  if (keyCode == 50) {
+    gameState = 1;
+  }
+
+  if (keyCode == 51) {
+    gameState = 2;
+  }
+}
+
+
 
