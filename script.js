@@ -29,8 +29,7 @@ class Ball {
 
     spelers.forEach((speler1) => {
       if (speler1.x < this.x + this.w && speler1.x + speler1.w > this.x) {
-        if (speler1.y < this.y + this.h && speler1.y + speler1.h > this.y) { 
-          this.colour = "orange"     
+        if (speler1.y < this.y + this.h && speler1.y + speler1.h > this.y) {      
           this.vx = this.vx * -1;
         }
       }
@@ -41,8 +40,7 @@ class Ball {
 
     goals.forEach((goal1) => {
       if (goal1.x < this.x + this.w && goal1.x + goal1.w > this.x) {
-        if (goal1.y < this.y + this.h && goal1.y + goal1.h > this.y) { 
-          this.colour = "orange"     
+        if (goal1.y < this.y + this.h && goal1.y + goal1.h > this.y) {  
           this.vx = this.vx * -1;
         }
       }
@@ -86,18 +84,18 @@ class Goal {
 }
 
 class Speler {
-  constructor(xs, ys, controls) {
-    this.x = xs;
-    this.y = ys;
+  constructor(x, y, control) {
+    this.x = x;
+    this.y = y;
     this.w = 10;
     this.h = 50;
-    this.controls = controls;
+    this.control = control;
   }
 
   drawSpeler() {
     fill("cyan");
 
-    if (this.controls == "m") {
+    if (this.control == "m") {
       this.x = mouseX;
       this.y = mouseY;     
 
