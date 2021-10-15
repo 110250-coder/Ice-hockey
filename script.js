@@ -138,7 +138,8 @@ class Speler {
 
 function preload(){
   image = loadImage('Images/image.png');
-  imageend = loadImage ('Images/imageend.jpg')
+  imageend = loadImage ('Images/imageend.jpg');
+  hockey = loadImage ('Images/hockey.jpeg');
 }
 
 var spelers = [], goals = [];
@@ -173,10 +174,12 @@ function draw() {
 }
 
 function menu (){
-  background("cyan");
-  text("1. menu", 25, 65);
-  text("2. start game", 25, 85);
-  text("3. end game", 25, 105);
+  background(hockey);
+  fill('white');
+  textSize(16);
+  text("1. menu", 100, 65);
+  text("2. start game", 100, 85);
+  text("3. end game", 100, 105);
 }
 
 function game() {
