@@ -138,7 +138,7 @@ class Speler {
 
 function preload(){
   image = loadImage('Images/image.png');
-  imageend = loadImage ('Images/imageend.jpg');
+  imageend = loadImage ('Images/end.jpg.crdownload');
   hockey = loadImage ('Images/hockey.jpeg');
 }
 
@@ -175,11 +175,11 @@ function draw() {
 
 function menu (){
   background(hockey);
-  fill('white');
+  fill('71BFF5');
   textSize(16);
-  text("1. menu", 100, 65);
-  text("2. start game", 100, 85);
-  text("3. end game", 100, 105);
+  text("Press 1 - for the menu", 50, 100);
+  text("Press 2 - to start the game", 50, 120);
+  text("Press 3 - to end the game", 50, 140);
 }
 
 function game() {
@@ -207,7 +207,7 @@ function game() {
 function endgame() {
   background(imageend);
   fill('white');
-  text("END GAME, press 1 to restart", 25, 45);
+  text("END GAME, press 1 to restart", 25, 40);
   x = 0;
 }
 
