@@ -156,18 +156,14 @@ function setup() {
 }
 
 function draw() {
- 
-
   text("gameState" + gameState, 25, 25);
-
  
-
   if (gameState == 1) {
     game();
   }
 
   if (gameState == 2) {
-    gameOver();
+    endgame();
   }
 
   if (gameState == 0) {
@@ -179,7 +175,7 @@ function menu (){
   background("cyan");
   text("1. menu", 25, 65);
   text("2. start game", 25, 85);
-  text("3. game over", 25, 105);
+  text("3. end game", 25, 105);
 }
 
 function game() {
@@ -194,15 +190,19 @@ function game() {
   speler1.drawSpeler();
   speler2.drawSpeler();
 
+  if(goal1.score > 2 || goal2.score > 2){
+    gameState = 2;
+  }
+
   fill("white");
   textSize(20);
   text(goal2.score, 100, height /2);
   text(goal1.score, width - 110, height /2);
 }
 
-function gameOver() {
+function endgame() {
   background("green");
-  text("GAME OVER", 25, 45);
+  text("END GAME", 25, 45);
   x = 0;
 }
 
@@ -214,6 +214,8 @@ function keyPressed() {
 
   if (keyCode == 50) {
     gameState = 1;
+    goal1.score = 0;
+    goal2.score = 0;
   }
 
   if (keyCode == 51) {
