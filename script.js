@@ -1,4 +1,4 @@
-var speler1, speler2, gameState = 1;
+var speler1, speler2, gameState = 0;      
 class Ball {
   constructor(x, y, w, h, vx, vy, colour) {
     this.x = x;
@@ -24,9 +24,6 @@ class Ball {
       this.vx = this.vx * -1;
     }
 
-    text(speler1.x, 10, 10);
-    text(speler1.y, 10, 30);
-
     spelers.forEach((speler1) => {
       if (speler1.x < this.x + this.w && speler1.x + speler1.w > this.x) {
         if (speler1.y < this.y + this.h && speler1.y + speler1.h > this.y) {      
@@ -42,6 +39,9 @@ class Ball {
       if (goal1.x < this.x + this.w && goal1.x + goal1.w > this.x) {
         if (goal1.y < this.y + this.h && goal1.y + goal1.h > this.y) {  
           this.vx = this.vx * -1;
+          goal1.score++;
+          this.x = width/2;
+          this.y = height/2;
         }
       }
       else {
@@ -59,6 +59,7 @@ class Goal {
     this.w = w;
     this.h = h;
     this.colour = ("black");
+    this.score=0;
   }
 
   drawGoal() {
@@ -159,6 +160,8 @@ function draw() {
 
   text("gameState" + gameState, 25, 25);
 
+ 
+
   if (gameState == 1) {
     game();
   }
@@ -190,6 +193,17 @@ function game() {
   goal2.checkcollision();
   speler1.drawSpeler();
   speler2.drawSpeler();
+
+  fill("white");
+  textSize(20);
+  text(goal2.score, 100, height /2);
+  text(goal1.score, width - 110, height /2);
+}
+
+function gameOver() {
+  background("green");
+  text("GAME OVER", 25, 45);
+  x = 0;
 }
 
 function keyPressed() {
