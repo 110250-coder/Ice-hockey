@@ -138,6 +138,7 @@ class Speler {
 
 function preload(){
   image = loadImage('Images/image.png');
+  imageend = loadImage ('Images/imageend.jpg')
 }
 
 var spelers = [], goals = [];
@@ -201,8 +202,9 @@ function game() {
 }
 
 function endgame() {
-  background("green");
-  text("END GAME", 25, 45);
+  background(imageend);
+  fill('white');
+  text("END GAME, press 1 to restart", 25, 45);
   x = 0;
 }
 
